@@ -1,0 +1,148 @@
+$timingFunc: cubic-bezier(.77, 0, .18, 1);
+
+.exifBtn {
+    position: absolute;
+    bottom: 92px;
+    left: 20px;
+    text-transform: uppercase;
+    z-index: $zIndex + 401;
+    cursor: pointer;
+    padding: 5px;
+    color: $whiteColor;
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.6s ease, opacity 0.3s ease;
+    .btnText {
+        position: relative;
+        @include font-semibold;
+        font-size: 12px;
+        letter-spacing: .12em;
+        color: inherit;
+        vertical-align: middle;
+        z-index: $zIndex + 16;
+        opacity: 1;
+        transition: all .4s $timingFunc;
+        &.hide {
+            opacity: 0;
+        }
+    }
+    .cross {
+        position: relative;
+        display: block;
+        z-index: $zIndex + 401;
+        &:before, &:after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: $yellowColor;
+            left: 0;
+            bottom: -3px;
+            transition: all .5s $timingFunc;  
+        }
+        &.show {
+            &:before {
+                animation: before-to-cross .7s forwards;
+                animation-timing-function: $timingFunc;
+            }
+            &:after {
+                animation: after-to-cross .7s forwards;
+                animation-timing-function: $timingFunc;
+            }
+        }
+        &.hide {
+            &:before {
+                animation: before-out-cross .7s;
+                animation-timing-function: $timingFunc;
+            }
+            &:after {
+                animation: after-out-cross .7s;
+                animation-timing-function: $timingFunc;
+            }
+        }
+    }
+    &:hover {
+        .cross:before, .cross:after {
+            width: 100%;
+        }
+    }
+    &.todown {
+        transform: translateY(70px);
+    }
+    &.hide {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+@keyframes before-out-cross {
+    0% {
+        width: 100%;
+        transform: rotate(-45deg);
+        bottom: 6px;
+    }
+    30% {
+        width: 100%;
+        transform: rotate(0deg);
+        bottom: 6px;
+    }
+    100% {
+        width: 100%;
+        transform: rotate(0deg);
+        bottom: -3px;
+    }
+}
+
+@keyframes after-out-cross {
+    0% {
+        width: 100%;
+        transform: rotate(45deg);
+        bottom: 6px;
+    }
+    30% {
+        width: 100%;
+        transform: rotate(0deg);
+        bottom: 6px;
+    }
+    100% {
+        width: 100%;
+        transform: rotate(0deg);
+        bottom: -3px;
+    }
+}
+
+@keyframes before-to-cross {
+    0% {
+        width: 100%;
+        transform: rotate(0deg);
+    }
+    30% {
+        width: 100%;
+        transform: rotate(0deg);
+        bottom: 6px;
+    }
+    100% {
+        width: 100%;
+        transform: rotate(-45deg);
+        bottom: 6px;
+    }
+}
+
+@keyframes after-to-cross {
+    0% {
+        width: 100%;
+        transform: rotate(0deg);
+    }
+    30% {
+        width: 100%;
+        transform: rotate(0deg);
+        bottom: 6px;
+    }
+    100% {
+        width: 100%;
+        transform: rotate(45deg);
+        bottom: 6px;
+    }
+}

@@ -1,0 +1,128 @@
+$timingFunc: cubic-bezier(0.445, 0.300, 0.320, 1);
+$animationDuration: 1.3s;
+
+.naviArrows {
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    span {
+        position: absolute;
+        bottom: 26px;
+        z-index: $zIndex + 9;
+        width: 20px;
+        height: 20px;
+        opacity: .5;
+        cursor: pointer;
+    }
+    & .right {
+        right: 15px;
+        animation: arrow-right-move $animationDuration backwards;
+        animation-timing-function: $timingFunc;
+        transition: all .3s ease-in-out;
+        &:hover {
+            right: 20px;
+            opacity: 1;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            right: 7px;
+            bottom: -23px;
+            width: 28px;
+            height: 75px;
+            transform: rotate(-135deg);
+        }
+    }
+    & .left {
+        left: 15px;
+        animation: arrow-left-show $animationDuration backwards;
+        animation-timing-function: $timingFunc;
+        transition: all .3s ease-in-out;
+        &:hover {
+            left: 20px;
+            opacity: 1;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            right: 0px;
+            bottom: -16px;
+            width: 28px;
+            height: 75px;
+            transform: rotate(45deg);
+        }
+    }
+    &.hide {
+        opacity: 0;
+    }
+}
+
+@keyframes arrow-right-move {
+    0% {
+        background: $yellowColor;
+        border-color: $yellowColor;
+        left: 15px;
+        opacity: 1;
+        width: 1px;
+        height: 1px;
+        transform: rotate(90deg);
+    }
+    5% {
+        border-color: $yellowColor;
+        width: 5px;
+        height: 5px;
+        transform: rotate(90deg);
+    }
+    30% {
+        width: 20px;
+        height: 20px;
+        transform: rotate(90deg);
+    }
+    50% {
+        background: transparent;
+        border-color: $whiteColor;
+        left: 15px;
+        opacity: 1;
+        transform: rotate(135deg);
+    }
+    99% {
+        left: calc(98% - 6px);
+        opacity: .5;
+    }
+    100% {
+        border-color: $whiteColor;
+        left: auto;
+        opacity: .5;
+    }
+}
+
+@keyframes arrow-left-show {
+    0% {
+        border-color: $yellowColor;
+        opacity: 1;
+        width: 1px;
+        height: 1px;
+        transform: rotate(-90deg);
+    }
+    5% {
+        border-color: $yellowColor;
+        width: 5px;
+        height: 5px;
+        transform: rotate(-90deg);
+    }
+    30% {
+        width: 20px;
+        height: 20px;
+        transform: rotate(-90deg);
+    }
+    50% {
+        border-color: $whiteColor;
+        opacity: 1;
+        transform: rotate(-45deg);
+    }
+    100% {
+        border-color: $whiteColor;
+        opacity: .5;
+    }
+}

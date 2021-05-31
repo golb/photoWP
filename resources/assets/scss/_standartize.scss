@@ -1,0 +1,121 @@
+/*
+* Standartize for all themes
+*/
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    &:focus {
+        outline: none;
+    }
+    &:before,
+    &:after {
+        box-sizing: border-box;
+    }
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+.button,
+a,
+button,
+div,
+h1,
+h2,
+h3,
+h4,
+li,
+p,
+span,
+ul {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+//  ARROWS
+@mixin base-whole-arrow {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 12px;
+    top: 0;
+    width: 11px;
+    height: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 11px 9px;
+}
+
+@mixin arrow ($color) {
+    @if $color==light {
+        &:after {
+            @include base-whole-arrow;
+            background-image: url(/img/icons/arrow-light.png);
+        }
+    }
+    @if $color==dark {
+        &:after {
+            @include base-whole-arrow;
+            background-image: url(/img/icons/arrow-dark.png);
+        }
+    }
+}
+
+// how to use arrow:after
+//.test-arrow {
+//  @include arrow ('light');
+//}
+.half-arrow {
+    display: inline-block;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid $whiteColor;
+    border-top: 1px solid $whiteColor;
+    &.right {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+    &.left {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    &.up {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    &.down {
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+    }
+}
+
+.triangle-arrow {
+    display: inline-block;
+    position: relative;
+    width: 0;
+    height: 0;
+    &.up {
+        border-left: $borderArrowWidth solid transparent;
+        border-right: $borderArrowWidth solid transparent;
+        border-bottom: $borderArrowWidth solid $whiteColor;
+    }
+    &.down {
+        border-left: $borderArrowWidth solid transparent;
+        border-right: $borderArrowWidth solid transparent;
+        border-top: $borderArrowWidth solid $whiteColor;
+    }
+    &.left {
+        border-top: $borderArrowWidth solid transparent;
+        border-bottom: $borderArrowWidth solid transparent;
+        border-right: $borderArrowWidth solid $whiteColor;
+    }
+    &.right {
+        border-top: $borderArrowWidth solid transparent;
+        border-bottom: $borderArrowWidth solid transparent;
+        border-left: $borderArrowWidth solid $whiteColor;
+    }
+}

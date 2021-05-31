@@ -1,0 +1,48 @@
+.viewedMarker {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background: $yellowColor;
+    z-index: $zIndex + 13;
+    transition: all .6s;
+    & .nSlides {
+        @include font-semibold;
+        letter-spacing: .12em;
+        font-size: 14px;
+        position: absolute;
+        right: -32px;
+        bottom: 2px;
+        color: $whiteColor;
+        background: transparent;
+    }
+}
+
+.gradientMarker {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 76px;
+    transition: height 0.6s ease;
+    left: 0;
+    bottom: 0;
+    z-index: $zIndex + 3;
+    & .viewed {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        box-shadow: inset -13px 0 22px -10px rgba(255, 194, 13, 1);
+        border-right: 1px solid $yellowColor;
+        transition: all .6s;
+    }
+    &.hide {
+        height: 0;
+    }
+}

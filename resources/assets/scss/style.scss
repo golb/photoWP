@@ -1,0 +1,86 @@
+//***********************************************************************************************
+//                                           THEME VARIABLES
+//***********************************************************************************************
+//
+$color-one: #ffffff;
+$color-two: #ffc20d;
+$color-three: #1a1a1a;
+$color-four: #000000;
+//
+//***********************************************************************************************
+//                                           BASE VARIABLES
+//***********************************************************************************************
+//
+$whiteColor: $color-one;
+$yellowColor: $color-two;
+$darkColor: $color-three;
+$blackColor: $color-four;
+$wrapperColor: rgba(26, 26, 26, 0.72);
+$borderArrowWidth: 5px;
+$zIndex: 1;
+//
+//***********************************************************************************************
+//                                               MIXINS
+//***********************************************************************************************
+//
+@mixin font-light {
+    font: {
+        family: 'Oswald', sans-serif;
+        weight: 300;
+    }
+}
+
+@mixin font-semibold {
+    font: {
+        family: 'Oswald', sans-serif;
+        weight: 400;
+    }
+}
+
+@mixin font-bold {
+    font: {
+        family: 'Oswald', sans-serif;
+        weight: 700;
+    }
+}
+
+//
+//***********************************************************************************************
+//                                               BASE IMPORTS
+//***********************************************************************************************
+//
+@import 'ress';
+@import 'standartize';
+
+/*
+//***********************************************************************************************
+//                                               MAIN STYLES
+//***********************************************************************************************
+*/
+
+body {
+    //background-color: $darkColor;
+    //background-image: url(http://ux.perfectial.com/img/noise.png);
+    //background-image: url(https://image.freepik.com/free-photo/black-stripped-paper_1194-6331.jpg);
+    //background-image: url(https://image.freepik.com/free-photo/dark-surface_1160-204.jpg);
+    //background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f6b29f4567655.5634c982816b1.jpg);
+    background-repeat: repeat;
+    background-color: #313131;
+    background-color: #21232F;
+    background-color: #23292f;
+    overflow: hidden;
+}
+
+//
+//***********************************************************************************************
+//                                               WIDGETS IMPORTS
+//***********************************************************************************************
+//
+@import 'fullScreenSlider';
+@import 'linearSliderController';
+@import 'viewedMarker';
+@import 'naviArrows';
+@import 'exifBtn';
+@import 'navTop';
+@import 'logo';
+@import 'exifData';

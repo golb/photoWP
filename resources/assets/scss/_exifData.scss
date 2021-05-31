@@ -1,0 +1,169 @@
+$timingFunc: cubic-bezier(.77, 0, .18, 1);
+$zoomRotator: 1.2;
+$animationSpeed: 1s;
+
+
+.exifData {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $zIndex;
+    color: $whiteColor;
+    @include font-semibold;
+    font-size: 15px;
+    svg {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+}
+
+#Scene, #rotators {
+    transform-origin: 50% 50%;
+}
+
+#rotators {
+    stroke-opacity: 0;
+}
+
+#lens, #cam {
+    transform: translateX(0) translateY(0);
+}
+
+#callouts-body, #callouts-lens, #callouts-iso {
+    stroke: $yellowColor;
+}
+
+#aperture path, #labels-body, #labels-focal {
+    fill-opacity: 0;
+}
+
+#Exposure, #Camera, #Aperture {
+    text-anchor: middle;
+}
+
+.show {
+    z-index: $zIndex + 21;
+    svg {
+        opacity: 1;
+    }
+}
+
+.show {
+    #lens path, #controller path, #camera-body path/*, #s-vertical path, #s-horizontal path, #m-vertical path, #m-horizontal path*/  {
+        animation: draw-camera $animationSpeed $animationSpeed * 0.33 forwards;
+        animation-timing-function: $timingFunc;
+    }
+    #transformers path, #sensors path  {
+        animation: draw-camera $animationSpeed forwards;
+        animation-delay: $animationSpeed * 1.33;
+        animation-timing-function: $timingFunc;
+    }
+    #rotators path  {
+        animation: run-rotator $animationSpeed * 0.66 $animationSpeed * 1.08 forwards, hide-rotator $animationSpeed * 0.66 $animationSpeed * 1.92 forwards;
+        animation-timing-function: $timingFunc;
+    }
+    #callouts-body path, #callouts-lens path, #callouts-iso path  {
+        animation: draw-camera $animationSpeed forwards;
+        animation-delay: $animationSpeed * 1.75;
+        animation-timing-function: $timingFunc;
+    }
+    #aperture path  {
+        fill-opacity: 1;
+        transition: fill-opacity $animationSpeed $animationSpeed * 1.75 $timingFunc;
+    }
+}
+
+.show {
+    #rotators {
+        animation: zoom-rotator $animationSpeed * 0.5 $animationSpeed * 0.83 forwards, slide-rotator $animationSpeed $animationSpeed * 1.25 forwards;
+        animation-timing-function: ease-in-out;
+    }
+    #lens {
+        animation: slide-lens $animationSpeed forwards;
+        animation-delay: $animationSpeed * 1.25;
+        animation-timing-function: ease-in-out;
+    }
+    #cam {
+        animation: slide-camera-body $animationSpeed forwards;
+        animation-delay: $animationSpeed * 1.25;
+        animation-timing-function: ease-in-out;
+    }
+    #labels-body, #labels-focal {
+        fill-opacity: 1;
+        transition: fill-opacity $animationSpeed * 0.83 $animationSpeed * 2.33 $timingFunc;
+    }
+}
+
+.maskmap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 739px;
+    width: 513px;
+    background-image: radial-gradient(50% 84%, rgba(35,41,47,0.00) 50%, #23292F 85%);
+}
+
+#mapid { 
+    height: 670px;
+    width: 513px;
+}
+
+
+@keyframes draw-camera {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes zoom-rotator {
+    0% {
+        transform: scale(1);
+        stroke-opacity: 1;
+    }
+    100% {
+        transform: scale($zoomRotator);
+        stroke-opacity: 1;
+    }
+}
+
+@keyframes run-rotator {
+    100% {
+        stroke-dasharray: 1 8;
+    }
+}
+
+@keyframes hide-rotator {
+    100% {
+        stroke-opacity: 0;
+    }
+}
+
+@keyframes slide-lens {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(-20%) translateY(20%);
+    }
+}
+
+@keyframes slide-rotator {
+    0% {
+        transform: scale($zoomRotator) translateX(0) translateY(0);
+    }
+    100% {
+        transform: scale($zoomRotator) translateX(-25%) translateY(20%);
+    }
+}
+
+@keyframes slide-camera-body {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(20%) translateY(-20%);
+    }
+}

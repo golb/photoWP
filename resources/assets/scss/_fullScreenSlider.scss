@@ -1,0 +1,115 @@
+$timingFunc: cubic-bezier(0.445, 0.300, 0.320, 1);
+
+
+.fullScreenSlider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: $zIndex;
+    &:before {
+        position: absolute;
+        content: '';
+        display: block;
+        background: $blackColor;
+        background: #23292f;
+        height: 0%;
+        width: 100%;
+        opacity: 1;
+        left: 0;        
+        bottom: 0;
+        z-index: $zIndex + 20;
+        transition: all .6s $timingFunc;
+    }
+    &.downPane {
+        &:before {
+            height: 100%;
+        }
+    }
+    div {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: left top;
+        overflow: hidden;
+        z-index: $zIndex;
+        transform: translateX(130%) scale(1.6);
+        &.slideRightIn {
+            animation: slide-right-zoom-minus 1s forwards;
+            animation-timing-function: $timingFunc;
+        }
+        &.slideRightOut {
+            animation: slide-right-zoom-plus 1s forwards;
+            animation-timing-function: $timingFunc;
+        }
+        &.slideLeftOut {
+            animation: slide-left-zoom-plus 1s forwards;
+            animation-timing-function: $timingFunc;
+        }
+        &.slideLeftIn {
+            animation: slide-left-zoom-minus 1s forwards;
+            animation-timing-function: $timingFunc;
+        }
+    }
+}
+
+@keyframes slide-right-zoom-minus {
+    0% {
+        z-index: $zIndex;
+        transform: translateX(-130%) scale(1.6);
+    }
+    100% {
+        z-index: $zIndex + 1;
+        transform: translateX(0%) scale(1);
+    }
+}
+
+@keyframes slide-right-zoom-plus {
+    0% {
+        z-index: $zIndex + 1;
+        transform: translateX(0%) scale(1);
+    }
+    100% {
+        z-index: $zIndex;
+        transform: translateX(130%) scale(1.6);
+    }
+}
+
+@keyframes slide-left-zoom-plus {
+    0% {
+        z-index: $zIndex + 1;
+        transform: translateX(0%) scale(1);
+    }
+    100% {
+        z-index: $zIndex;
+        transform: translateX(-130%) scale(1.6);
+    }
+}
+
+@keyframes slide-left-zoom-minus {
+    0% {
+        z-index: $zIndex;
+        transform: translateX(130%) scale(1.6);
+    }
+    100% {
+        z-index: $zIndex + 1;
+        transform: translateX(0%) scale(1);
+    }
+}
+
+@keyframes slide-zoom-plus {
+    0% {
+        transform: translateY(0%) scale(1);
+    }
+    50% {
+        transform: translateY(-3%) scale(1.6);
+    }
+    100% {
+        transform: translateY(10%) scale(1.8);
+    }
+}

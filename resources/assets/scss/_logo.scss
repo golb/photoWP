@@ -1,0 +1,12 @@
+.logo {
+    position: absolute;
+    top: 15px;
+    left: 20px; 
+    z-index: $zIndex + 4;
+    color: $whiteColor;
+    fill: $whiteColor;
+    font-size: 20px;
+    svg {
+        fill: inherit;
+    }
+}

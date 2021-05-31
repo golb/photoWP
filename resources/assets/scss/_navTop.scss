@@ -1,0 +1,33 @@
+$heightNav: 45px;
+
+.navTop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $zIndex + 3;
+    height: $heightNav;
+    width: 100%;
+    /*&:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: $heightNav;
+        background: $blackColor;
+        opacity: .2;
+        z-index: $zIndex;
+    }
+    &:after {
+        content: '';
+        display: block;
+        background: $whiteColor;
+        position: fixed;
+        opacity: .1;
+        width: 100%;
+        height: 1px;
+        left: 0;
+        top: $heightNav;
+        z-index: $zIndex + 1;
+    }*/
+}
